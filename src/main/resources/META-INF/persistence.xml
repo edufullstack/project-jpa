@@ -1,0 +1,20 @@
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xsi:schemalocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    <persistence-unit name="persistenceEdufullstack">
+   		<!-- Define la clase para Hibernate que implementa JPA -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <!-- Define las clases que seran mapeadas al configurarse la conexion a la base de datos -->
+        <class>com.edufullstack.projectjpa.entity.Disquera</class>
+        
+        <properties>
+       		<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> 
+       		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tienda_musical?serverTimezone=America/Mexico_City"/> 
+       		<property name="javax.persistence.jdbc.user" value="root"/> 
+       		<property name="javax.persistence.jdbc.password" value="abcd1234"/> 
+       		
+       		<property name="hibernate.show_sql" value="true"/>
+       		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+        </properties>
+        
+    </persistence-unit>
+</persistence>

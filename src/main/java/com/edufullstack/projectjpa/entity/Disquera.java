@@ -19,7 +19,7 @@ public class Disquera {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idDisquera")
-	private int idDisquera;
+	private Long idDisquera;
 	
 	@Column(name="descripcion", length = 100)
 	private String descripcion;
@@ -33,11 +33,11 @@ public class Disquera {
 	@Column(name="estatus")
 	private boolean estatus;
 
-	public int getIdDisquera() {
+	public Long getIdDisquera() {
 		return idDisquera;
 	}
 
-	public void setIdDisquera(int idDisquera) {
+	public void setIdDisquera(Long idDisquera) {
 		this.idDisquera = idDisquera;
 	}
 
