@@ -37,7 +37,12 @@ class DisquerDAOImplTest {
 	 */
 	@Test
 	void testActualizar() {
-		fail("Not yet implemented");
+		Disquera disqueraConsultada = this.disqueraDAO.consultarById(9L);
+		
+		disqueraConsultada.setDescripcion("Disquera IronMaiden");
+		
+		this.disqueraDAO.actualizar(disqueraConsultada);
+		
 	}
 
 	/**
@@ -61,7 +66,9 @@ class DisquerDAOImplTest {
 	 */
 	@Test
 	void testConsultarById() {
-		fail("Not yet implemented");
+		Disquera disquera = this.disqueraDAO.consultarById(9L);
+		
+		System.out.println("Disquera: " + disquera.getDescripcion());
 	}
 
 }
