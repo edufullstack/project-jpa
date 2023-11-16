@@ -13,6 +13,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
 /**
  * @author edufullstack Clase que implementa las transacciones para la tabla de
@@ -67,15 +68,36 @@ public class DisquerDAOImpl implements DisqueraDao {
 	}
 
 	@Override
-	public void eliminar(Disquera disquera) {
-		// TODO Auto-generated method stub
+	public void eliminar(Long id) {
+		EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+		
+		Disquera disqueraConsultada = em.find(Disquera.class, id);
+		
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		try {
+			em.remove(disqueraConsultada);
+			et.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			if(et != null) {
+				et.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
 
 	}
 
 	@Override
 	public List<Disquera> consultar() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+		
+		TypedQuery<Disquera> queryDisquera= (TypedQuery<Disquera>) em.createQuery("FROM Disquera ORDER BY descripcion");
+		
+		return queryDisquera.getResultList();
+		
 	}
 
 	@Override

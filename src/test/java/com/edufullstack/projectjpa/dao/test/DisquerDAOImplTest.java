@@ -6,6 +6,7 @@ package com.edufullstack.projectjpa.dao.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,7 @@ class DisquerDAOImplTest {
 	@Test
 	void testGuardar() {
 		Disquera disquera = new Disquera();
-		disquera.setDescripcion("MegaForce");
+		disquera.setDescripcion("Elektriks");
 		disquera.setFechaCreacion(LocalDateTime.now());
 		disquera.setEstatus(true);
 		
@@ -50,7 +51,8 @@ class DisquerDAOImplTest {
 	 */
 	@Test
 	void testEliminar() {
-		fail("Not yet implemented");
+		Long id = 9L;
+		this.disqueraDAO.eliminar(id);
 	}
 
 	/**
@@ -58,7 +60,14 @@ class DisquerDAOImplTest {
 	 */
 	@Test
 	void testConsultar() {
-		fail("Not yet implemented");
+		
+		List<Disquera> disquerasConsultadas =  this.disqueraDAO.consultar();
+		
+		assertTrue(disquerasConsultadas.size() > 0);
+		
+		disquerasConsultadas.forEach(disquera -> {
+			System.out.println("Disquera: " + disquera.getDescripcion());
+		});
 	}
 
 	/**
